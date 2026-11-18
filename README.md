@@ -2,10 +2,8 @@
 
 > A modern, multi-tenant SaaS application built with **React** and backed by a **100% Free PostgreSQL** database with `pgvector` AI retrieval. Deployed free on **Vercel**.
 
-![Frontend: React 19](https://img.shields.io/badge/Frontend-React%2019%20%7C%20TypeScript%20%7C%20Vite-blue?logo=react)
-![Database: PostgreSQL](https://img.shields.io/badge/Database-Free%20PostgreSQL%20%2B%20pgvector-336791?logo=postgresql)
-![Hosting: Vercel](https://img.shields.io/badge/Hosting-Vercel%20(Free%20Tier)-black?logo=vercel)
-![Styling: Tailwind CSS](https://img.shields.io/badge/Styling-Tailwind%20CSS%20v4-38B2AC?logo=tailwindcss)
+[![Live App](https://img.shields.io/badge/Live%20Demo-Open%20Web%20App-2563EB?style=for-the-badge&logo=vercel)](https://ai-saas-app.vercel.app)
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github)](https://github.com/jattiphrswan/ai-saas-app)
 
 ---
 
