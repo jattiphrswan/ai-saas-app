@@ -50,6 +50,6 @@ export interface Subscription {
 }
 
 export const PLAN_LIMITS = {
-  free: { documents: 3, questions_per_month: 20, max_file_bytes: 5 * 1024 * 1024 },
-  pro:  { documents: 50, questions_per_month: 500, max_file_bytes: 20 * 1024 * 1024 },
+  free: { documents: 50, questions_per_month: 2000, max_file_bytes: 25 * 1024 * 1024 },
+  pro:  { documents: 50, questions_per_month: 2000, max_file_bytes: 25 * 1024 * 1024 },
 } as const

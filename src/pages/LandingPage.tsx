@@ -13,7 +13,7 @@ export default function LandingPage() {
           </div>
           <div className="hidden md:flex items-center gap-6 text-sm text-gray-600">
             <a href="#features" className="hover:text-gray-900 transition">Features</a>
-            <Link to="/pricing" className="hover:text-gray-900 transition">Pricing</Link>
+            <Link to="/pricing" className="hover:text-gray-900 transition font-medium text-blue-600">Free Forever</Link>
           </div>
           <div className="flex items-center gap-3">
             <Link to="/login" className="text-sm font-medium text-gray-600 hover:text-gray-900 px-3 py-2">Sign in</Link>
@@ -25,9 +25,9 @@ export default function LandingPage() {
       {/* Hero */}
       <section className="bg-gradient-to-b from-blue-50/60 via-white to-white py-20 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold px-3 py-1.5 rounded-full mb-6">
+          <div className="inline-flex items-center gap-2 bg-green-50 border border-green-200 text-green-700 text-xs font-semibold px-3 py-1.5 rounded-full mb-6">
             <Zap className="w-3.5 h-3.5" />
-            Powered by Gemini RAG
+            100% Free · Powered by Gemini RAG
           </div>
           <h1 className="text-5xl md:text-6xl font-extrabold text-gray-900 tracking-tight leading-tight mb-6">
             Chat with your PDFs.<br />
@@ -41,10 +41,10 @@ export default function LandingPage() {
               Start for free <ArrowRight className="w-4 h-4" />
             </Link>
             <Link to="/pricing" className="border border-gray-300 hover:border-gray-400 bg-white text-gray-700 font-semibold px-8 py-3.5 rounded-xl text-base transition">
-              See pricing
+              Explore Free Features
             </Link>
           </div>
-          <p className="text-xs text-gray-400 mt-4">Free tier available · No credit card required</p>
+          <p className="text-xs text-gray-400 mt-4">100% Free &bull; No paid subscriptions &bull; No credit card required</p>
 
           {/* Mock UI preview */}
           <div className="mt-14 bg-white rounded-2xl shadow-xl border border-gray-200 p-6 max-w-2xl mx-auto text-left">

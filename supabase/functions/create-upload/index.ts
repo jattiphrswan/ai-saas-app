@@ -32,8 +32,8 @@ serve(async (req) => {
     // Check plan quota
     const { data: sub } = await supabase.from('subscriptions').select('plan_code').eq('user_id', user.id).maybeSingle()
     const plan = sub?.plan_code || 'free'
-    const maxDocs = plan === 'pro' ? 50 : 3
-    const maxBytes = plan === 'pro' ? 20 * 1024 * 1024 : 5 * 1024 * 1024
+    const maxDocs = 50
+    const maxBytes = 25 * 1024 * 1024
 
     if (bytes > maxBytes) {
       return json({ data: null, error: `File exceeds plan size limit` }, 413)

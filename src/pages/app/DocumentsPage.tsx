@@ -45,7 +45,7 @@ export default function DocumentsPage() {
       return
     }
     if (!canUpload) {
-      toast.error(`You have reached your limit of ${limits.documents} documents. Please upgrade to Pro.`)
+      toast.error(`You have reached the maximum of ${limits.documents} documents. Delete older documents to add new ones.`)
       return
     }
 
@@ -187,7 +187,7 @@ export default function DocumentsPage() {
         {!canUpload && (
           <p className="text-xs text-amber-700 mt-2.5 flex items-center gap-1.5 font-medium">
             <AlertCircle className="w-3.5 h-3.5 flex-shrink-0" />
-            Document capacity reached. <Link to="/app/billing" className="underline font-semibold ml-1">Upgrade to Pro</Link> to unlock 50 documents.
+            Maximum document capacity reached ({limits.documents} files). Delete an unused document to upload a new one.
           </p>
         )}
       </div>

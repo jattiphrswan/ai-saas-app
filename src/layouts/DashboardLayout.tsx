@@ -1,12 +1,11 @@
 import { Outlet, NavLink, useNavigate } from 'react-router-dom'
-import { FileText, BarChart2, CreditCard, Settings, LogOut } from 'lucide-react'
+import { FileText, BarChart2, Settings, LogOut } from 'lucide-react'
 import { useAuth } from '../hooks/useAuth'
 import toast from 'react-hot-toast'
 
 const navItems = [
   { to: '/app/documents', icon: FileText, label: 'Documents' },
   { to: '/app/usage', icon: BarChart2, label: 'Usage' },
-  { to: '/app/billing', icon: CreditCard, label: 'Billing' },
   { to: '/app/settings', icon: Settings, label: 'Settings' },
 ]
 
