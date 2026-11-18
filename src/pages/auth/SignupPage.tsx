@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { supabase, isSupabaseConfigured } from '../../lib/supabase'
 import { useAuth } from '../../hooks/useAuth'
-import { Mail, Lock, Info } from 'lucide-react'
+import { Mail, Lock } from 'lucide-react'
 import toast from 'react-hot-toast'
 
 export default function SignupPage() {
@@ -20,22 +20,14 @@ export default function SignupPage() {
 
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (password !== confirm) {
-      toast.error('Passwords do not match')
-      return
-    }
-    if (password.length < 8) {
-      toast.error('Password must be at least 8 characters')
-      return
-    }
+    if (password !== confirm) return toast.error("Passwords don't match")
+    if (password.length < 8) return toast.error('Use at least 8 characters')
     setLoading(true)
 
     if (!isSupabaseConfigured) {
-      // Local preview mode: immediately grant access
       localStorage.setItem('docchat_local_email', email)
-      toast.success('Account created (Local Preview Mode)!')
+      toast.success('Account ready!')
       navigate('/app')
-      setLoading(false)
       return
     }
 
@@ -44,6 +36,7 @@ export default function SignupPage() {
       password,
       options: { emailRedirectTo: `${window.location.origin}/auth/callback` },
     })
+
     if (error) {
       toast.error(error.message)
       setLoading(false)
@@ -54,16 +47,14 @@ export default function SignupPage() {
 
   if (sent) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 flex items-center justify-center p-4">
-        <div className="bg-white rounded-2xl shadow-xl border border-gray-100 w-full max-w-md p-8 text-center">
-          <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <Mail className="w-8 h-8 text-green-600" />
-          </div>
-          <h2 className="text-xl font-bold text-gray-900 mb-2">Check your email</h2>
-          <p className="text-gray-500 mb-6 text-sm">
-            We sent a verification link to <strong>{email}</strong>. Click it to activate your account.
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+        <div className="bg-white rounded-2xl border border-gray-200 max-w-sm w-full p-8 text-center">
+          <Mail className="w-10 h-10 text-blue-600 mx-auto mb-3" />
+          <h2 className="text-lg font-bold text-gray-900">Check your inbox</h2>
+          <p className="text-xs text-gray-500 mt-2">
+            We sent a verification link to <strong>{email}</strong>.
           </p>
-          <Link to="/login" className="text-blue-600 font-medium hover:underline text-sm">
+          <Link to="/login" className="inline-block text-xs font-semibold text-blue-600 mt-6 hover:underline">
             Back to sign in
           </Link>
         </div>
@@ -72,79 +63,74 @@ export default function SignupPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl shadow-xl border border-gray-100 w-full max-w-md p-8">
-        <div className="flex items-center gap-2 mb-6">
-          <img src="/favicon.png" alt="DocChat AI" className="w-8 h-8 rounded-lg object-contain shadow-xs" />
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+      <div className="bg-white rounded-2xl shadow-sm border border-gray-200 w-full max-w-sm p-6 sm:p-8">
+        <Link to="/" className="flex items-center gap-2 mb-6">
+          <img src="/favicon.png" alt="DocChat" className="w-8 h-8 rounded" />
           <span className="font-bold text-gray-900 text-lg">DocChat AI</span>
-        </div>
+        </Link>
 
-        {!isSupabaseConfigured && (
-          <div className="mb-6 p-3 bg-blue-50 border border-blue-200 rounded-xl flex items-start gap-2.5 text-xs text-blue-800">
-            <Info className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
-            <div>
-              <span className="font-semibold">Local Preview Mode:</span> Signing up will instantly log you in locally so you can test all features right away.
-            </div>
-          </div>
-        )}
+        <h1 className="text-xl font-bold text-gray-900">Create an account</h1>
+        <p className="text-gray-500 mb-6 text-xs">Free forever. No credit card required.</p>
 
-        <h1 className="text-2xl font-bold text-gray-900 mb-1">Create your account</h1>
-        <p className="text-gray-500 mb-6 text-sm">Free forever · No credit card required</p>
         <form onSubmit={handleSignup} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+            <label className="block text-xs font-medium text-gray-700 mb-1">Email</label>
             <div className="relative">
-              <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+              <Mail className="absolute left-3 top-2.5 w-4 h-4 text-gray-400" />
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="w-full pl-9 pr-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                placeholder="you@example.com"
+                className="w-full pl-9 pr-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-blue-500"
+                placeholder="you@email.com"
               />
             </div>
           </div>
+
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Password</label>
+            <label className="block text-xs font-medium text-gray-700 mb-1">Password</label>
             <div className="relative">
-              <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+              <Lock className="absolute left-3 top-2.5 w-4 h-4 text-gray-400" />
               <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 minLength={8}
-                className="w-full pl-9 pr-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                placeholder="Min 8 characters"
+                className="w-full pl-9 pr-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-blue-500"
+                placeholder="At least 8 characters"
               />
             </div>
           </div>
+
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Confirm password</label>
+            <label className="block text-xs font-medium text-gray-700 mb-1">Confirm password</label>
             <div className="relative">
-              <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+              <Lock className="absolute left-3 top-2.5 w-4 h-4 text-gray-400" />
               <input
                 type="password"
                 value={confirm}
                 onChange={(e) => setConfirm(e.target.value)}
                 required
-                className="w-full pl-9 pr-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full pl-9 pr-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-blue-500"
                 placeholder="Repeat password"
               />
             </div>
           </div>
+
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-blue-600 hover:bg-blue-700 disabled:opacity-60 text-white font-medium py-2.5 rounded-lg text-sm transition flex items-center justify-center gap-2 cursor-pointer shadow-sm"
+            className="w-full bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white font-medium py-2 rounded-lg text-sm transition"
           >
-            {loading && <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />}
-            {loading ? 'Creating account…' : 'Create account'}
+            {loading ? 'Setting up…' : 'Create account'}
           </button>
         </form>
-        <p className="text-center text-sm text-gray-500 mt-6">
-          Already have an account?{' '}
+
+        <p className="text-center text-xs text-gray-500 mt-6">
+          Already registered?{' '}
           <Link to="/login" className="text-blue-600 font-medium hover:underline">
             Sign in
           </Link>
