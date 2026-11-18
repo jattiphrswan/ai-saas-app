@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Zap, Check, ArrowRight, ArrowLeft } from 'lucide-react'
+import { Check, ArrowRight, ArrowLeft } from 'lucide-react'
 
 export default function PricingPage() {
   return (
@@ -8,9 +8,7 @@ export default function PricingPage() {
       <nav className="border-b border-gray-100 sticky top-0 bg-white/95 backdrop-blur z-50">
         <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-              <Zap className="w-4 h-4 text-white" />
-            </div>
+            <img src="/favicon.png" alt="DocChat AI" className="w-8 h-8 rounded-lg object-contain shadow-xs" />
             <span className="font-bold text-gray-900 text-lg">DocChat AI</span>
           </Link>
           <div className="flex items-center gap-3">

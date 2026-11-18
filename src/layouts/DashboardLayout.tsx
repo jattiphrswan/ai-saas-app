@@ -1,5 +1,5 @@
 import { Outlet, NavLink, useNavigate } from 'react-router-dom'
-import { FileText, BarChart2, CreditCard, Settings, LogOut, Zap } from 'lucide-react'
+import { FileText, BarChart2, CreditCard, Settings, LogOut } from 'lucide-react'
 import { useAuth } from '../hooks/useAuth'
 import toast from 'react-hot-toast'
 
@@ -26,9 +26,7 @@ export default function DashboardLayout() {
       <aside className="w-64 bg-white border-r border-gray-200 flex flex-col fixed h-full z-10">
         <div className="p-6 border-b border-gray-100">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-              <Zap className="w-4 h-4 text-white" />
-            </div>
+            <img src="/favicon.png" alt="DocChat AI" className="w-8 h-8 rounded-lg object-contain shadow-xs" />
             <span className="font-bold text-gray-900 text-lg">DocChat AI</span>
           </div>
         </div>

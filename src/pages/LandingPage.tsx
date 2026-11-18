@@ -8,9 +8,7 @@ export default function LandingPage() {
       <nav className="border-b border-gray-100 sticky top-0 bg-white/95 backdrop-blur z-50">
         <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-              <Zap className="w-4 h-4 text-white" />
-            </div>
+            <img src="/favicon.png" alt="DocChat AI" className="w-8 h-8 rounded-lg object-contain shadow-xs" />
             <span className="font-bold text-gray-900 text-lg">DocChat AI</span>
           </div>
           <div className="hidden md:flex items-center gap-6 text-sm text-gray-600">
@@ -107,7 +105,7 @@ export default function LandingPage() {
       <footer className="border-t border-gray-100 py-8 px-4 bg-white">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-500">
           <div className="flex items-center gap-2 font-bold text-gray-900">
-            <Zap className="w-4 h-4 text-blue-600" /> DocChat AI
+            <img src="/favicon.png" alt="DocChat AI" className="w-5 h-5 rounded object-contain" /> DocChat AI
           </div>
           <div className="flex gap-6">
             <Link to="/pricing" className="hover:text-gray-900">Pricing</Link>
